@@ -24,7 +24,7 @@
     </style>
  <script>
     function tabAleatoria () {
-        const tabuleiro = Array.from({length: 10}, () => Array(10).fill(w));
+        const tabuleiro = Array.from({length: 10}, () => Array(10).fill("w"));
         //ta criando a matriz 10x10
 
         function navios (tipo, quantidade) {
@@ -50,8 +50,9 @@
         return tabuleiro;
     }
         
-    function atirar(linha,coluna,imgElement){
-        imgElement.src=imagens[position[linha][coluna]]
+    const position = tabAleatoria();
+     function atirar(linha,coluna,imgElement){
+        imgElement.src=imagens[tabuleiro[linha][coluna]]
     }
     
     const imagens = {
