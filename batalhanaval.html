@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha Naval</title>
+    
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+        }
+
+        table{
+            border: 3px solid rgb(243, 114, 136);
+            border-collapse:collapse;
+        
+        }
+        
+        td{
+            border: 3px solid rgb(243, 114, 136);
+            
+        }
+    </style>
+ <script>
+    
+    function atirar(linha,coluna,imgElement){
+        imgElement.src=imagens[position[linha][coluna]]
+    }
+    
+    const imagens = {
+        "b": "imagens/bomba.png",
+        "s1": "imagens/Ship-1.png",
+        "s2": "imagens/Ship-2.png",
+        "s3": "imagens/Ship-3.png",
+        "w": "imagens/Wave.png"
+    }
+
+    let position = [
+        ["s1","w","w","w","s2","w","w","w","w","w"],
+        ["w","w","w","w","b","w","s1","w","w","w"],
+        ["w","w","w","w","w","s3","w","w","s1","b"],
+        ["w","w","b","s3","w","w","w","w","w","w"],
+        ["w","s3","w","w","w","w","w","s1","b","w"],
+        ["w","w","w","s3","w","w","b","s2","w","w"],
+        ["w","b","w","w","w","w","w","w","w","w"],
+        ["s2","w","w","b","w","w","s1","w","w","w"],
+        ["w","w","b","w","w","w","s3","w","b","w"],
+        ["w","s2","w","w","w","b","s2","w","w","w"]
+    ]
+
+        document.write("<table>")
+        for (x=0; x<10; x++){
+            document.write("<tr>")
+            for (y=0; y<10; y++){
+                document.write("<td><img id='"+x+','+y+"' src='imagens/Fire-icon.png' onclick='atirar(".concat(x,",",y,",this)'></td>"));
+    }
+    document.write("</tr>")
+
+    }
+    document.write("</table>")
+
+</script>
+
+</head>
+   
+<body>
+</body>
+</html>
