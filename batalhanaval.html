@@ -23,7 +23,33 @@
         }
     </style>
  <script>
-    
+    function tabAleatoria () {
+        const tabuleiro = Array.from({length: 10}, () => Array(10).fill(w));
+        //ta criando a matriz 10x10
+
+        function navios (tipo, quantidade) {
+            let colocados=0;
+            while (colocados<quantidade){
+                let x = Math.floor(Math.random() * 10);
+                let y = Math.floor(Math.random() * 10);
+
+                if (tabuleiro[x][y] === "w") {
+                    tabuleiro[x][y] = tipo; //colocando o tipo do navio
+                    colocados++
+                }
+                    
+            }
+            
+        }
+
+        navios ("s1", 5);
+        navios ("s2", 3);
+        navios ("s3", 2);
+        navios ("b", 4);
+
+        return tabuleiro;
+    }
+        
     function atirar(linha,coluna,imgElement){
         imgElement.src=imagens[position[linha][coluna]]
     }
@@ -36,18 +62,7 @@
         "w": "imagens/Wave.png"
     }
 
-    let position = [
-        ["s1","w","w","w","s2","w","w","w","w","w"],
-        ["w","w","w","w","b","w","s1","w","w","w"],
-        ["w","w","w","w","w","s3","w","w","s1","b"],
-        ["w","w","b","s3","w","w","w","w","w","w"],
-        ["w","s3","w","w","w","w","w","s1","b","w"],
-        ["w","w","w","s3","w","w","b","s2","w","w"],
-        ["w","b","w","w","w","w","w","w","w","w"],
-        ["s2","w","w","b","w","w","s1","w","w","w"],
-        ["w","w","b","w","w","w","s3","w","b","w"],
-        ["w","s2","w","w","w","b","s2","w","w","w"]
-    ]
+
 
         document.write("<table>")
         for (x=0; x<10; x++){
