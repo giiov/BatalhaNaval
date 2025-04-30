@@ -36,7 +36,24 @@
             transition: background-color 0.3s ease;
         }
 
+        
+
         button:hover {
             background-color: rgb(220, 90, 110);
         }
   
+        img{
+            width: 50px;
+            height: 50px;
+        }
+
+        table{
+            border: 3px solid rgb(243, 114, 136);
+            border-collapse:collapse;
+        
+        }
+        
+        td{
+            border: 2px solid rgb(243, 114, 136);
+            
+        }
