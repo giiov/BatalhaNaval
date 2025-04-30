@@ -6,6 +6,15 @@
             align-items: center;
             min-height: 100vh;
             background-color: #f0f0f0;
+            transition: opacity 0.5s ease-in-out; /* Transição para o fade out/in */
+    opacity: 0;
+        }
+        body.fade-out {
+            opacity: 0;
+        }
+
+        body.fade-in {
+            opacity: 1;
         }
 
         .container {
