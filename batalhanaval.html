@@ -11,64 +11,116 @@
          })
     </script>
   
- <script>
-    function tabAleatoria () {
-        const tabuleiro = Array.from({length: 10}, () => Array(10).fill("w"));
-        //ta criando a matriz 10x10
-
-        function navios (tipo, quantidade) {
-            let colocados=0;
-            while (colocados<quantidade){
-                let x = Math.floor(Math.random() * 10);
-                let y = Math.floor(Math.random() * 10);
-
-                if (tabuleiro[x][y] === "w") {
-                    tabuleiro[x][y] = tipo; //colocando o tipo do navio
-                    colocados++
-                }
-                    
-            }
-            
-        }
-
-        navios ("s1", 5);
-        navios ("s2", 3);
-        navios ("s3", 2);
-        navios ("b", 4);
-
-        return tabuleiro;
-    }
-        
-    const position = tabAleatoria();
-     function atirar(linha,coluna,imgElement){
-        imgElement.src=imagens[position[linha][coluna]];
-    }
-    
-    const imagens = {
-        "b": "imagens/bomba.png",
-        "s1": "imagens/Ship-1.png",
-        "s2": "imagens/Ship-2.png",
-        "s3": "imagens/Ship-3.png",
-        "w": "imagens/Wave.png"
-    }
-
-
-
-        document.write("<table>")
-        for (x=0; x<10; x++){
-            document.write("<tr>")
-            for (y=0; y<10; y++){
-                document.write("<td><img id='"+x+','+y+"' src='imagens/Fire-icon.png' onclick='atirar(".concat(x,",",y,",this)'></td>"));
-    }
-    document.write("</tr>")
-
-    }
-    document.write("</table>")
-
-</script>
+ 
 
 </head>
    
 <body>
+    <h1>Batalha Naval!</h1>
+    <div id="status">
+    
+        <p>Pontuação: <span id="pontos">0</span></p>
+        <p>Vidas: <span id="vidas">4</span></p>
+    </div>
+
+    <script>
+        let pontuacao = 0;
+        let vidas = 4;
+    
+        function tabAleatoria () {
+            const tabuleiro = Array.from({length: 10}, () => Array(10).fill("w"));
+            //ta criando a matriz 10x10
+    
+            function navios (tipo, quantidade) {
+                let colocados=0;
+                while (colocados<quantidade){
+                    let x = Math.floor(Math.random() * 10);
+                    let y = Math.floor(Math.random() * 10);
+    
+                    if (tabuleiro[x][y] === "w") {
+                        tabuleiro[x][y] = tipo; //colocando o tipo do navio
+                        colocados++
+                    }
+                        
+                }
+                
+            }
+    
+            navios ("s1", 5);
+            navios ("s2", 3);
+            navios ("s3", 2);
+            navios ("b", 4);
+    
+            return tabuleiro;
+        }
+            
+        const position = tabAleatoria();
+         function atirar(linha,coluna,imgElement){
+            const valor = position[linha][coluna];
+            imgElement.src = imagens[valor];
+            imgElement.onclick = null; //pra não clicar duas vezez no mesmo
+            
+    
+            switch(valor) {
+                case "s1": pontuacao +=15;
+                break;
+    
+                case "s2": pontuacao +=10;
+                break;
+    
+                case "s3": pontuacao +=5;
+                break;
+    
+                case "b": pontuacao -=20;
+                          vidas -=1;
+                break;
+    
+                case "w": default:
+                    break;
+            }
+    
+            document.getElementById("pontos").textContent = pontuacao;
+            document.getElementById("vidas").textContent = vidas;
+        
+            if (vidas <=0 ){
+                alert("Você perdeu! Sua pontuação final foi: " + pontuacao);
+                window.location.reload(true);
+                return;
+    
+            }
+    
+            if (pontuacao >=50) {
+                alert("Parabéns você conseguiu " + pontuacao + " pontos e ganhou!");
+                window.location.reload(true);
+            }
+        }
+        
+        const imagens = {
+        "b": "BatalhaNaval/imagens/bomba.png",
+        "s1": "BatalhaNaval/imagens/Ship-1.png",
+        "s2": "BatalhaNaval/imagens/Ship-2.png",
+        "s3": "BatalhaNaval/imagens/Ship-3.png",
+        "w": "BatalhaNaval/imagens/Wave.png"
+    }
+    
+    
+    
+    
+            document.write("<table>")
+            for (x=0; x<10; x++){
+                document.write("<tr>")
+                for (y=0; y<10; y++){
+                    document.write("<td><img id='"+x+','+y+"' src='BatalhaNaval/imagens/Fire-icon.png' onclick='atirar(".concat(x,",",y,",this)'></td>"));
+    ;
+        }
+        document.write("</tr>")
+    
+        }
+        document.write("</table>")
+    
+        
+    
+    </script>
+
 </body>
 </html>
