@@ -5,13 +5,13 @@ Este é um projeto básico desenvolvido para a disciplina de Interfaces Web.
 O objetivo do trabalho era praticar HTML, CSS, JavaScript, manipulação do DOM e construção de interfaces simples e funcionais.
 O jogo simula uma versão leve e divertida de Batalha Naval, com tabuleiro 10x10 e pontuação dinâmica.
 
-#🚀 Tecnologias Utilizadas
+# 🚀 Tecnologias Utilizadas
 - HTML
 - CSS
 - JavaScript
 
-##🎮 Como Jogar
-#🎯 Objetivo
+## 🎮 Como Jogar
+# 🎯 Objetivo
 
 - Acumular 50 pontos para vencer.
 - Você começa com 4 vidas.
